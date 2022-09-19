@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { fetchTasks, Task } from "./../services/tasks";
+import { fetchTasks, addTask as add, Task } from "./../services/tasks";
 interface ReturnType {
   tasks: Task[];
-  addTask: (label: string) => void;
+  addTask: (label: string) => Promise<void>;
 }
 export const useTasks = (): ReturnType => {
   const [tasks, setTasks] = useState<Task[]>([]);
-  const addTask = (label: string) => {
+  const addTask = async(label: string) => {
+    await add(label)
+    fetchTasks().then((response) => setTasks(response));
     console.log('addTask', label);
   };
 
