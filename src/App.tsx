@@ -10,25 +10,13 @@ const App: React.FC = () => {
     addTask(inputValue);
     setInputValue('');
   }
-  const myTasks = tasks.join()
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>task: {myTasks}</p>
+        {tasks.map((task) => (<p>{task.label}</p>))}
         <input type="text" value={inputValue} onChange={(e) => { setInputValue(e.target.value) }} />
         <input type="button" value="add" onClick={handleAddClick} />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
