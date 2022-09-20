@@ -16,6 +16,9 @@ export const fetchTasks = async (): Promise<Task[]> => {
 };
 
 export const addTask = (label: string): Promise<any> => {
-  const data: Task = { id: 0, label };
-  return axios.post(endpoint("task"), data);
+  return axios.post(endpoint("task"), { label });
 };
+
+export const removeTask = (id: number): Promise<any> => {
+  return axios.delete(endpoint(`task/${id}`));
+}
