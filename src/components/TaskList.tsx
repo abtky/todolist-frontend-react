@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Task } from "../services/tasks";
+import { TaskListItem } from "./TaskListItem";
+import { AdditionForm } from "./AdditionForm";
 
 interface Props {
   tasks: Task[];
@@ -7,36 +9,22 @@ interface Props {
   removeTask: (id: number) => {};
 }
 export const TaskList: React.FC<Props> = (props: Props) => {
-  const [inputValue, setInputValue] = useState("");
-  const handleAddClick = () => {
-    props.addTask(inputValue);
-    setInputValue("");
+  const handleDeleteClick = (id: number) => {
+    props.removeTask(id);
   };
-  const handleDeleteClick = (taskId: number) => {
-    props.removeTask(taskId);
+  const handleAddClick = (value: string) => {
+    props.addTask(value);
   };
   return (
     <>
       {props.tasks.map((task) => (
-        <p key={task.id}>
-          {task.label}
-          <button
-            onClick={() => {
-              handleDeleteClick(task.id);
-            }}
-          >
-            Delete
-          </button>
-        </p>
+        <TaskListItem
+          key={task.id}
+          task={task}
+          handleDeleteClick={handleDeleteClick}
+        />
       ))}
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => {
-          setInputValue(e.target.value);
-        }}
-      />
-      <input type="button" value="add" onClick={handleAddClick} />
+      <AdditionForm handleAddClick={handleAddClick} />
     </>
   );
 };
