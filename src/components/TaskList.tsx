@@ -13,7 +13,6 @@ export const TaskList: React.FC<Props> = (props: Props) => {
     setInputValue("");
   };
   const handleDeleteClick = (taskId: number) => {
-    console.log("handleDeleteClick", taskId);
     props.removeTask(taskId);
   };
   return (
