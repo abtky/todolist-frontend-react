@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { useTasks } from "./hooks/useTasks";
-import { TaskList } from "./components/TaskList";
+import React, { useState } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { useTasks } from './hooks/useTasks';
+import { TaskList } from './components/TaskList';
 
 const App: React.FC = () => {
   const { tasks, addTask, removeTask } = useTasks();
