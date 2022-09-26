@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import { Task } from "../services/tasks";
-import { TaskListItem } from "./TaskListItem";
-import { AdditionForm } from "./AdditionForm";
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+import React from 'react';
+import { Task } from '../services/tasks';
+import { TaskListItem } from './TaskListItem';
+import { AdditionForm } from './AdditionForm';
 
 interface Props {
   tasks: Task[];
-  addTask: (label: string) => {};
-  removeTask: (id: number) => {};
+  addTask: (label: string) => void;
+  removeTask: (id: number) => void;
 }
 export const TaskList: React.FC<Props> = (props: Props) => {
   const handleDeleteClick = (id: number) => {

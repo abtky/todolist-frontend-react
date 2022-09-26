@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { useTasks } from './hooks/useTasks';

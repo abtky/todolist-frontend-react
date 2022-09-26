@@ -1,5 +1,10 @@
-import React from "react";
-import { Task } from "../services/tasks";
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable react/jsx-filename-extension */
+import React from 'react';
+import { Task } from '../services/tasks';
 
 interface Props {
   task: Task;
