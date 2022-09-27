@@ -1,5 +1,14 @@
-import { useEffect, useState } from "react";
-import { fetchTasks, addTask as add, removeTask as remove, Task } from "./../services/tasks";
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import { useEffect, useState } from 'react';
+import {
+  fetchTasks,
+  addTask as add,
+  removeTask as remove,
+  Task,
+} from '../services/tasks';
+
 interface ReturnType {
   tasks: Task[];
   addTask: (label: string) => Promise<void>;
