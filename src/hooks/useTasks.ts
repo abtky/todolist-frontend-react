@@ -1,6 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import { useEffect, useState } from 'react';
 import {
   fetchTasks,
@@ -18,16 +15,28 @@ export const useTasks = (): ReturnType => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const addTask = async (label: string) => {
     await add(label);
-    fetchTasks().then((response) => setTasks(response));
+    fetchTasks()
+      .then((response) => setTasks(response))
+      .catch((e) => {
+        throw e;
+      });
   };
 
   const removeTask = async (id: number) => {
     await remove(id);
-    fetchTasks().then((response) => setTasks(response));
+    fetchTasks()
+      .then((response) => setTasks(response))
+      .catch((e) => {
+        throw e;
+      });
   };
 
   useEffect(() => {
-    fetchTasks().then((response) => setTasks(response));
+    fetchTasks()
+      .then((response) => setTasks(response))
+      .catch((e) => {
+        throw e;
+      });
   }, []);
   return {
     tasks,

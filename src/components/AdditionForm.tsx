@@ -1,15 +1,13 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/destructuring-assignment */
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 
 interface Props {
   handleAddClick: (label: string) => void;
 }
 export const AdditionForm: FC<Props> = (props: Props) => {
+  const { handleAddClick: addTask } = props;
   const [inputValue, setInputValue] = useState('');
   const handleAddClick = () => {
-    props.handleAddClick(inputValue);
+    addTask(inputValue);
     setInputValue('');
   };
   return (

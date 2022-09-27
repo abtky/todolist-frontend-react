@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import axios from 'axios';
 
 export interface Task {
@@ -7,12 +6,12 @@ export interface Task {
 }
 
 const endpoint = (path: string): string => {
-  const baseUrl = 'http://localhost:8000';
+  const baseUrl = 'http://127.0.0.1:8000';
   const url = new URL(`${baseUrl}/${path}`);
   return url.toString();
 };
 export const fetchTasks = async (): Promise<Task[]> => {
-  const response = await axios.get(endpoint('task'));
+  const response = await axios.get<Task[]>(endpoint('task'));
   return response.data;
 };
 
