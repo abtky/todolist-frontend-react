@@ -24,5 +24,6 @@ module.exports = {
       2,
       { namedComponents: 'arrow-function' },
     ],
+    'react/no-unknown-property': ['error', { ignore: ['css'] }],
   },
 };
