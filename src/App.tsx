@@ -1,42 +1,38 @@
+/** @jsxImportSource @emotion/react */
+import { css, keyframes } from '@emotion/react';
 import React from 'react';
-import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
 
 import logo from './logo.svg';
 import { useTasks } from './hooks/useTasks';
 import { TaskList } from './components/TaskList';
 
-const AppRoot = styled.article`
-  text-align: center;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  background-color: #282c34;
-`;
+const logoSpin = keyframes({
+  from: { transform: 'rotate(0deg)' },
+  to: { transform: 'rotate(360deg)' },
+});
 
-const AppLogoSpin = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-const AppHeader = styled.header`
-  font-size: calc(10px + 2vmin);
-`;
-
-const AppLogo = styled.img`
-  height: 20vmin;
-  pointer-events: none;
-  @media (prefers-reduced-motion: no-preference) {
-    animation: ${AppLogoSpin} infinite 10s linear;
-  }
-`;
+const style = {
+  root: css({
+    textAlign: 'center',
+    minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+    backgroundColor: '#282c34',
+  }),
+  header: css({
+    fontSize: 'calc(10px + 2vmin)',
+  }),
+  logo: css({
+    height: '20vmin',
+    pointerEvents: 'none',
+    '@media (prefers-reduced-motion: no-preference)': {
+      animation: `${logoSpin} infinite 10s linear`,
+    },
+  }),
+};
 
 const App: React.FC = () => {
   const { tasks, addTask, removeTask } = useTasks();
@@ -51,12 +47,12 @@ const App: React.FC = () => {
     });
   };
   return (
-    <AppRoot>
-      <AppHeader>
-        <AppLogo src={logo} alt="logo" />
-      </AppHeader>
+    <article css={style.root}>
+      <header css={style.header}>
+        <img css={style.logo} src={logo} alt="logo" />
+      </header>
       <TaskList tasks={tasks} addTask={addTaskRef} removeTask={removeTaskRef} />
-    </AppRoot>
+    </article>
   );
 };
 
